@@ -3,11 +3,12 @@
 ## Formato
 
 ```text
-Decision:
-Contexto:
-Alternativas:
-Tradeoff:
-Resultado:
+Decision:usar roles con STS en lugar de access keys de larga duración.
+Contexto:las access keys no expiran y si se filtran dan acceso indefinido.
+Los roles con STS generan credenciales temporales con trazabilidad.
+Alternativas: access keys rotadas manualmente, vault/secret manager.
+Tradeoff:asumir un rol requiere más configuración inicial, menos riesgo.
+Resultado:app-role con inline policy de privilegio mínimo sobre course-data-raw.
 ```
 
 ## Decisiones
