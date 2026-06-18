@@ -3,11 +3,11 @@
 ## Formato
 
 ```text
-Decision:
-Contexto:
-Alternativas:
-Tradeoff:
-Resultado:
+Decision:Decision: usar DuckDB para consultar push_events.json directamente.
+Contexto:necesitaba analizar 1658 eventos sin querer cargarlos en Postgres.
+Alternativas:cargar en Postgres, usar pandas.
+Tradeoff:DuckDB no persiste datos, pero no necesita servidor ni esquema previo.
+Resultado:query en 2 líneas sobre el archivo JSON, sin infraestructura.
 ```
 
 ## Decisiones
