@@ -3,11 +3,16 @@
 ## Formato
 
 ```text
-Decision:
-Contexto:
+Decision:separar course-data-raw (demo IAM lab 04) de course-data-lake 
+(fuente de verdad de datos reales del curso).
+Contexto:necesitamos un bucket durable para Olist + GitHub Archive que 
+sobreviva al ciclo de vida de cada lab, con BPA, encryption y versioning 
+desde el día uno.
 Alternativas:
-Tradeoff:
-Resultado:
+Tradeoff:dos buckets en lugar de uno. A favor: separación clara de 
+intención, escalable a futuras clases (Analytics consume directo desde lake).
+Resultado:course-data-lake con versioning + BPA + SSE + bucket policy 
+que restringe lectura al app-role.
 ```
 
 ## Decisiones
