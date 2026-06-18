@@ -3,11 +3,18 @@
 ## Formato
 
 ```text
-Decision:
-Contexto:
+Decision:usar instance profile (rol via IMDSv2) en lugar de access keys hardcodeadas en la VM.
+
+Contexto:una instancia que necesita leer S3 puede acceder por dos caminos:
+(a) access keys guardadas en /home/user/.aws/credentials, o
+(b) un rol asociado vía instance profile que devuelve creds temporales por IMDSv2.
+
 Alternativas:
-Tradeoff:
-Resultado:
+Tradeoff:opción (a) es más directa pero deja claves de larga duración en disco
+— si la instancia se compromete o se snapshotea, esas claves quedan expuestas.
+Opción (b) requiere setup inicial pero las credenciales rotan automáticamente y
+nunca tocan disco.
+Resultado:instance profile 'app-instance-profile' con rol 'app-role' del lab 04.
 ```
 
 ## Decisiones
