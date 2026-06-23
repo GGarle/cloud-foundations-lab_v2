@@ -3,11 +3,17 @@
 ## Formato
 
 ```text
-Decision:
-Contexto:
-Alternativas:
-Tradeoff:
-Resultado:
+Decision:usar VPC endpoint Gateway para que la subred privada llegue a S3,
+en lugar de un NAT gateway con egress a Internet
+Contexto:EC2 privada necesita leer S3. Dos caminos:
+(a) NAT gateway → Internet → S3 (caro, expone egress)
+(b) VPC endpoint Gateway → red interna AWS (gratis, privado)
+Altern
+Tradeoff:VPC endpoint solo cubre S3 y DynamoDB. Para otros servicios
+necesitaría PrivateLink (Interface endpoints, tiene costo por hora).
+Resultado:VPC endpoint para S3, sin NAT. Si necesitamos egress genuino
+después, sumamos NAT con costo conocido.
+
 ```
 
 ## Decisiones
