@@ -3,11 +3,16 @@
 ## Formato
 
 ```text
-Decision:
-Contexto:
-Alternativas:
-Tradeoff:
-Resultado:
+Decision:usar OpenTofu (HCL declarativo) para la infra en lugar de scripts
+imperativos con aws CLI o boto3.
+Contexto:scripts imperativos requieren manejar idempotencia a mano y no
+muestran el diff antes de aplicar. IaC declarativa hace eso por nosotros.
+Alternativas:Terraform (mismo HCL, licencia BSL desde 2023),
+CloudFormation (AWS-only), AWS CDK, Pulumi.
+Tradeoff:hay que aprender HCL y el modelo de state. A favor: diff antes
+de aplicar, destroy/apply idempotente, portabilidad entre clouds.
+Resultado: iac/ en HCL, ejecutable con tofu o terraform indistinto.
+Backend local en este lab; remoto (S3 + lock) en el proyecto final.
 ```
 
 ## Decisiones
